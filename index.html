@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>A3</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+</head>
+<body>
+    <div class="app-container">
+        <aside class="sidebar">
+            <header>
+                <h1>Nursultan's Recovery</h1>
+                <p>CSC316 - A3</p>
+                <p>I track my health metrics with a device called Whoop. It measures my workouts, sleep quality, heart rate and outputs a RECOVERY score.</p>
+            </header>
+            <div class="view-toggle">
+                <a href="#" id="view-switch">Switch to Stats View</a>
+            </div>
+            <div id="timeline-controls" class="controls">
+                <h2>Select your activity and how much you plan to sleep tonight to see my recovery scores next day <br>(as if you were me)</h2>
+                <div class="control-group">
+                    <label>Activity Type:</label>
+                    <div class="radio-group">
+                        <label><input type="radio" name="activity" value="all" checked> All</label>
+                        <label><input type="radio" name="activity" value="cardio"> Cardio</label>
+                        <label><input type="radio" name="activity" value="weightlifting"> Weightlifting</label>
+                        <label><input type="radio" name="activity" value="both"> Both</label>
+                        <label><input type="radio" name="activity" value="none"> Rest Day</label>
+                    </div>
+                </div>
+                <div class="control-group">
+                    <label for="sleep-slider">Maximum Sleep Hours: <span id="sleep-val">7</span>h</label>
+                    <input type="range" id="sleep-slider" min="4.5" max="9" step="0.5" value="7">
+                </div>
+
+                <div class="stats-box">
+                    <p>Found <span id="days-count">0</span> matching days.</p>
+                    <p>Average Recovery: <span id="avg-recovery">0</span>%</p>
+                </div>
+            </div>
+            <div id="stats-controls" class="controls hidden">
+                <div class="control-group">
+                    <label>Recovery Category:</label>
+                    <div class="radio-group">
+                        <label><input type="radio" name="recovery-cat" value="green" checked> Optimal (>67%)</label>
+                        <label><input type="radio" name="recovery-cat" value="yellow"> Sufficient (37-67%)</label>
+                        <label><input type="radio" name="recovery-cat" value="red"> Bad (<37%)</label>
+                    </div>
+                </div>
+            </div>
+        </aside>
+        <main class="chart-area">
+            <div id="chart-container">
+                <svg id="recovery-chart"></svg>
+                <svg id="stats-chart" class="hidden"></svg>
+            </div>
+            <div id="tooltip" class="tooltip hidden"></div>
+        </main>
+    </div>
+    <script src="whoopVis.js"></script>
+    <script src="statsVis.js"></script>
+    <script src="main.js"></script>
+</body>
+</html>
